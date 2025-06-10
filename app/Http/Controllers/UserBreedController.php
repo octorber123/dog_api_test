@@ -1,0 +1,30 @@
+<?php
+namespace App\Http\Controllers;
+
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
+use App\Models\User;
+use App\Models\Breed;
+use App\Resources\BreedResource;
+use Illuminate\Http\Request;
+
+class UserBreedController extends Controller
+{
+    public function store(Request $request, User $user) :BreedResource
+    {
+        $validated = $request->validate([
+            'breed_id' => 'required|exists:breeds,id',
+        ]);
+
+        $breed = Breed::find($validated['breed_id']); 
+
+        if ($user->breedables()->find($validated['breed_id'])) {
+            return response()->json(['message' => 'Breed already associated with user.'], 409);
+        }
+        // I KNOW BREED_ID CAN BE USED INSTEAD, BUT I LIKE TO RETURN MY APIS WITH A RESOURCE
+        $user->breedables()->attach($breed);
+
+        return new BreedResource($breed);
+    }
+}
+
