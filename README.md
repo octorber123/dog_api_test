@@ -40,3 +40,12 @@ This project was completed as part of a technical test. It demonstrates integrat
 - Additionally, API responses within this Laravel app could be cached to enhance efficiency and scalability in future optimizations.
 
 
+---
+
+## 🌱 Environment
+
+Add the following to your `.env` file:
+
+```env
+APP_URL=http://dog_api_test.test
+```
