@@ -1,6 +1,6 @@
 # Laravel Dog API Test
 
-This project was completed as part of a technical test. It demonstrates integration with an external API, custom command creation, resourceful endpoints, and polymorphic relationships using Laravel 11.
+This project was completed as part of a technical test. It demonstrates integration with an external API, custom command creation, resourceful endpoints, and polymorphic relationships using Laravel 12.
 
 ---
 
